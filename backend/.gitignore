@@ -1,0 +1,8 @@
+env
+.local
+.production
+
+node_modules
+dist
+
+.vscode
