@@ -1,8 +1,28 @@
 import express from "express";
 import { User } from "../models/userModels.js";
 import bcrypt from "bcrypt";
+import verifyToken from "../middleware/authMiddleware.js";
 
 const router = express.Router();
+
+
+router.get("/verify", verifyToken, (req, res) => {
+  res.status(200).json({ message: "Protected route accessed" });
+});
+
+
+
+router.post("/register", async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({ username, email, password: hashedPassword });
+    await user.save();
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Registration failed" });
+  }
+});
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -29,7 +49,9 @@ router.post("/login", async (req, res) => {
       message: "Login successful",
       data: {
         userId: existingUser._id,
-        fullName: existingUser.fullName,
+        firstName: existingUser.firstName,
+        otherName: existingUser.otherName,
+        lastName: existingUser.lastName,
         email: existingUser.email,
         phone: existingUser.phone,
       },
@@ -41,6 +63,5 @@ router.post("/login", async (req, res) => {
       .json({ message: "Inrernal server error", error: error.message });
   }
 });
-
 
 export default router;

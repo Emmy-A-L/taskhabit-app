@@ -4,7 +4,7 @@ import { createUser, getAllUsers, getUserById, updateUser } from "../controllers
 const router = express.Router();
 
 // get all users
-router.get("/getAllUsers", getAllUsers);
+router.get("/getallusers", getAllUsers);
 
 // get users by id
 router.get("/getuser/:id", getUserById);

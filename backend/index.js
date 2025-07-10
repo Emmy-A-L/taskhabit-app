@@ -1,7 +1,7 @@
 import express from "express";
-import dbConnection from "./db/conn.js";
-import userRoute from "./routes/UserRoutes.js";
-import authRoutes from "./routes/AuthRoutes.js";
+import dbConnection from "./config/db.js";
+import userRoute from "./routes/userRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 const PORT = 4100;

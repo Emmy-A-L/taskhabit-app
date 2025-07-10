@@ -11,7 +11,8 @@ export const createUser = async (req, res) => {
     }
     // hash password from front end
 
-    const salt = await bcrypt.genSalt(10); // gen salt rounds
+    const salt = await bcrypt.genSalt(Number(process.env.SALT))
+    console.log(typeof process.env.SALT); // gen salt rounds
     const hashedPassword = await bcrypt.hash(user.password, salt); // hash the password
     user.password = hashedPassword; // replace password with hashed password
 
