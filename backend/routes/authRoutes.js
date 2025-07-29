@@ -60,7 +60,7 @@ router.post("/login", async (req, res) => {
     console.error("Error durin Login: ", error);
     res
       .status(500)
-      .json({ message: "Inrernal server error", error: error.message });
+      .json({ message: "Internal server error", error: error.message });
   }
 });
 

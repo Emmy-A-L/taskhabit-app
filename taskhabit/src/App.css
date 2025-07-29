@@ -1,42 +1,152 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+@import 'tailwindcss';
+/* TaskHabit Design System - All colors MUST be HSL */
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+@layer theme {
+  :root {
+    /* TaskHabit Brand Colors */
+    --background: #fafafa;
+    --foreground: #1f2937;
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+    --card: #ffffff;
+    --card-foreground: #1f2937;
+
+    --popover: #ffffff;
+    --popover-foreground: #1f2937;
+
+    --primary: #3dbe9e;
+    --primary-foreground: #ffffff;
+    --primary-hover: #37ab8f;
+    --primary-light: #eef9f6;
+
+    --secondary: #eef9f6;
+    --secondary-foreground: #1f2937;
+
+    --muted: #f2f4f8;
+    --muted-foreground: #768192;
+
+    --accent: #ffc75f;
+    --accent-foreground: #1f2937;
+    --accent-hover: #f7bd59;
+    --accent-light: #fff8e5;
+
+    --destructive: #f04747;
+    --destructive-foreground: #fafafa;
+
+    --border: #e4e7eb;
+    --input: #e4e7eb;
+    --ring: #3dbe9e;
+
+    --radius: 0.75rem;
+
+    /* Gradient Colors */
+    --gradient-primary-start: #3dbe9e;
+    --gradient-primary-end: #37ab8f;
+    --gradient-accent-start: #ffc75f;
+    --gradient-accent-end: #f7bd59;
+    --gradient-hero-start: #3dbe9e;
+    --gradient-hero-end: #ffc75f;
+    --gradient-subtle-start: #f9fefc;
+    --gradient-subtle-end: #fffde6;
+
+    /* Shadow Colors */
+    --shadow-color: #3dbe9e;
+
+    /* Sidebar Colors */
+    --sidebar-background: #fafafa;
+    --sidebar-foreground: #3c3c3c;
+    --sidebar-primary: #1a1a1a;
+    --sidebar-primary-foreground: #fafafa;
+    --sidebar-accent: #f3f3f3;
+    --sidebar-accent-foreground: #1a1a1a;
+    --sidebar-border: #e4e7eb;
+    --sidebar-ring: #3b82f6;
   }
-  to {
-    transform: rotate(360deg);
+
+  .dark {
+    --background: #0a0c12;
+    --foreground: #f1f5f9;
+
+    --card: #0a0c12;
+    --card-foreground: #f1f5f9;
+
+    --popover: #0a0c12;
+    --popover-foreground: #f1f5f9;
+
+    --primary: #f1f5f9;
+    --primary-foreground: #1a1a1a;
+
+    --secondary: #2a2e3a;
+    --secondary-foreground: #f1f5f9;
+
+    --muted: #2a2e3a;
+    --muted-foreground: #9aa9c1;
+
+    --accent: #2a2e3a;
+    --accent-foreground: #f1f5f9;
+
+    --destructive: #993535;
+    --destructive-foreground: #f1f5f9;
+
+    --border: #2a2e3a;
+    --input: #2a2e3a;
+    --ring: #c9d2eb;
+
+    --sidebar-background: #1a1a1a;
+    --sidebar-foreground: #f3f3f3;
+    --sidebar-primary: #3b82f6;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #292929;
+    --sidebar-accent-foreground: #f3f3f3;
+    --sidebar-border: #292929;
+    --sidebar-ring: #3b82f6;
+  }
+}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Utility classes for gradients and shadows */
+@layer components {
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--gradient-primary-start)), hsl(var(--gradient-primary-end)));
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--gradient-accent-start)), hsl(var(--gradient-accent-end)));
+  }
+  
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--gradient-hero-start)) 0%, hsl(var(--gradient-hero-end)) 100%);
+  }
+  
+  .gradient-subtle {
+    background: linear-gradient(135deg, hsl(var(--gradient-subtle-start)) 0%, hsl(var(--gradient-subtle-end)) 100%);
+  }
+  
+  .shadow-soft {
+    box-shadow: 0 4px 20px -4px hsl(var(--shadow-color) / 0.1);
+  }
+  
+  .shadow-medium {
+    box-shadow: 0 8px 30px -8px hsl(var(--shadow-color) / 0.15);
+  }
+  
+  .shadow-strong {
+    box-shadow: 0 12px 40px -12px hsl(var(--shadow-color) / 0.2);
+  }
+  
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-bounce {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
 }

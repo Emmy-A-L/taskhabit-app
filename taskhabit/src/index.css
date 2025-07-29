@@ -1,91 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
 
-:root {
-  --primary: #3DBE9E;
-  --accent: #FFC75F;
-  --text: #1F2937;
-  --light-bg: #F9FAFB;
+@layer base {
+  :root {
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", system-ui, sans-serif;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@layer components {
+  .btn-primary {
+    @apply bg-[#3dbe9e] text-[#ffffff] hover:bg-[#37ab8f] focus:ring-2 focus:ring-[#3dbe9e]/20 transition-all;
+  }
 
-body {
-  font-family: 'Inter', sans-serif;
-  color: var(--text);
-  background-color: #fff;
-  line-height: 1.6;
-}
+  .btn-secondary {
+    @apply bg-[#ffc75f] text-[#101828] hover:bg-[#f7bd59] focus:ring-2 focus:ring-[#ffc75f]/20 transition-all;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  border: none;
-}
-
-.btn-primary {
-  background-color: var(--primary);
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #2da58a;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(61, 190, 158, 0.3);
-}
-
-.btn-accent {
-  background-color: var(--accent);
-  color: var(--text);
-}
-
-.btn-accent:hover {
-  background-color: #e6b355;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(255, 199, 95, 0.3);
-}
-
-.section {
-  padding: 5rem 0;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: var(--primary);
-  border-radius: 2px;
+  .input-primary {
+    @apply block w-full rounded-[8px] border-[#d1d5dc] focus:border-[#3dbe9e] focus:ring-[#3dbe9e] 
+        font-[14px] leading-[1.4286];
+  }
 }
