@@ -1,23 +1,41 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+
+
 
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
+const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError("");
 
-    // TODO: Implement actual login logic
+    try {
+      await login(email, password);
+      onClose();
+      // Navigate to the protected route they were trying to access
+      const from = location.state?.from?.pathname || "/profile";
+      navigate(from);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to log in");
+    } finally {
+      setIsLoading(false);
+    }
 
     setIsLoading(false);
   };
@@ -29,12 +47,12 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           as={Fragment}
           enter="ease-out duration-300"
           enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
+          enterTo="opacity-80"
+          leave="ease-in duration-300"
+          leaveFrom="opacity-80"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 backdrop-blur-lg transition-opacity" />
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -67,6 +85,11 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                     Welcome back
                   </Dialog.Title>
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {error && (
+                      <div className="text-red-600 text-sm text-center mb-4" role="alert">
+                        {error}
+                      </div>
+                    )}
                     <div>
                       <label
                         htmlFor="email"
@@ -211,3 +234,5 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     </Transition.Root>
   );
 }
+
+export default LoginModal;

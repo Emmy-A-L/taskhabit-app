@@ -48,9 +48,10 @@ const footerNavigation = {
   ],
 };
 
-export default function Footer() {
+
+const Footer = () => {
   return (
-    <footer className="bg-white border-t border-gray-200">
+    <footer className="bg-white border-t border-gray-200 mt-2">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-12 sm:py-16 lg:px-8">
         <nav
           className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
@@ -88,3 +89,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

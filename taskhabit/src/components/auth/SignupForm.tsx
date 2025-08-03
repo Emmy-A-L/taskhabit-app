@@ -42,7 +42,7 @@ export default function SignupForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="max-w-md mx-auto"
+      className="max-w-md mx-auto my-8"
     >
       <h2 className="text-3xl font-bold text-center mb-8">
         Create Your Account
@@ -67,7 +67,7 @@ export default function SignupForm() {
             id="name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+            className="mt-1 px-4 py-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#3dbe9e] focus:ring-[#3dbe9e] sm:text-sm"
             required
           />
         </div>
@@ -131,7 +131,7 @@ export default function SignupForm() {
           />
         </div>
 
-        <Button type="submit" isLoading={isLoading} fullWidth>
+        <Button type="submit" isLoading={isLoading} >
           Create Account
         </Button>
       </form>

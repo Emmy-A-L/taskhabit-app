@@ -80,7 +80,8 @@ export default function TaskFeed() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as "recent" | "budget")}
-              className="input-primary"
+              className="block w-full rounded-[8px] border-[#d1d5dc] focus:border-[#3dbe9e] focus:ring-[#3dbe9e] 
+        font-[14px] leading-[1.4286]"
             >
               <option value="recent">Most Recent</option>
               <option value="budget">Highest Budget</option>
@@ -98,7 +99,7 @@ export default function TaskFeed() {
                   onClick={() => setSelectedCategory("all")}
                   className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
                     selectedCategory === "all"
-                      ? "bg-primary text-white"
+                      ? "bg-[#3dbe9e] text-white"
                       : "text-gray-600 hover:bg-gray-100"
                   }`}
                 >
@@ -110,7 +111,7 @@ export default function TaskFeed() {
                     onClick={() => setSelectedCategory(category)}
                     className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
                       selectedCategory === category
-                        ? "bg-primary text-white"
+                        ? "bg-[#3dbe9e] text-white"
                         : "text-gray-600 hover:bg-gray-100"
                     }`}
                   >

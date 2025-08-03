@@ -1,5 +1,7 @@
-import { Navigate, useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
+import LoginModal from "./LoginModal";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -7,7 +9,22 @@ interface ProtectedRouteProps {
 
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   const { user, loading } = useAuth();
-  const location = useLocation();
+//   const location = useLocation();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  // Show login modal when user is not authenticated
+  useEffect(() => {
+    if (!loading && !user) {
+      setShowLoginModal(true);
+    }
+  }, [loading, user]);
+
+  // Hide modal when user becomes authenticated
+  useEffect(() => {
+    if (user) {
+      setShowLoginModal(false);
+    }
+  }, [user]);
 
   if (loading) {
     return (
@@ -17,10 +34,13 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     );
   }
 
-  if (!user) {
-    // Redirect to login but save the location they tried to access
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
-
-  return <>{children}</>;
+  return (
+    <>
+      <LoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+      />
+      {user ? children : null}
+    </>
+  );
 }

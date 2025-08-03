@@ -113,40 +113,39 @@
 }
 
 /* Utility classes for gradients and shadows */
-@layer components {
-  .gradient-primary {
-    background: linear-gradient(135deg, hsl(var(--gradient-primary-start)), hsl(var(--gradient-primary-end)));
-  }
-  
-  .gradient-accent {
-    background: linear-gradient(135deg, hsl(var(--gradient-accent-start)), hsl(var(--gradient-accent-end)));
-  }
-  
-  .gradient-hero {
-    background: linear-gradient(135deg, hsl(var(--gradient-hero-start)) 0%, hsl(var(--gradient-hero-end)) 100%);
-  }
-  
-  .gradient-subtle {
-    background: linear-gradient(135deg, hsl(var(--gradient-subtle-start)) 0%, hsl(var(--gradient-subtle-end)) 100%);
-  }
-  
-  .shadow-soft {
-    box-shadow: 0 4px 20px -4px hsl(var(--shadow-color) / 0.1);
-  }
-  
-  .shadow-medium {
-    box-shadow: 0 8px 30px -8px hsl(var(--shadow-color) / 0.15);
-  }
-  
-  .shadow-strong {
-    box-shadow: 0 12px 40px -12px hsl(var(--shadow-color) / 0.2);
-  }
-  
-  .transition-smooth {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .transition-bounce {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
+
+.gradient-primary {
+  background: linear-gradient(135deg, #3dbe9e, #37ab8f);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, hsl(var(--gradient-accent-start)), hsl(var(--gradient-accent-end)));
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, hsl(var(--gradient-hero-start)) 0%, hsl(var(--gradient-hero-end)) 100%);
+}
+
+.gradient-subtle {
+  background: linear-gradient(135deg, hsl(var(--gradient-subtle-start)) 0%, hsl(var(--gradient-subtle-end)) 100%);
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 20px -4px hsl(var(--shadow-color) / 0.1);
+}
+
+.shadow-medium {
+  box-shadow: 0 8px 30px -8px hsl(var(--shadow-color) / 0.15);
+}
+
+.shadow-strong {
+  box-shadow: 0 12px 40px -12px hsl(var(--shadow-color) / 0.2);
+}
+
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-bounce {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

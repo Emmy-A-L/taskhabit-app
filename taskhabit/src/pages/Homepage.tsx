@@ -92,7 +92,7 @@ const Homepage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-primary py-20 text-white">
+      <section className="gradient-primary py-20 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to start your productivity journey?
@@ -101,9 +101,44 @@ const Homepage = () => {
             Join TaskHabit today and connect with people who can help you
             achieve more.
           </p>
-          <button className="bg-white text-primary px-8 py-3 rounded-lg text-lg font-semibold transition-bounce hover:shadow-medium">
+          <button className="bg-white text-[#3dbe9e] px-8 py-3 rounded-lg text-lg font-semibold transition-bounce hover:shadow-medium">
             Get Started
           </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-8">
+            <div className="bg-white shadow-lg rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-2">
+                How do I post a task?
+              </h3>
+              <p className="text-gray-600">
+                Simply click the "Post a Task" button, fill out the details, and set your budget.
+              </p>
+            </div>
+            <div className="bg-white shadow-lg rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-2">
+                How do I find someone to help?
+              </h3>
+              <p className="text-gray-600">
+                Browse tasks posted by others or receive offers from qualified task-doers in your area.
+              </p>
+            </div>
+            <div className="bg-white shadow-lg rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-2">
+                Is there a fee to use TaskHabit?
+              </h3>
+              <p className="text-gray-600">
+                TaskHabit is free to use. You only pay for completed tasks.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -1,20 +1,19 @@
-import type { ReactNode } from "react";
+import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 
 type buttonProps = {
-  onClick?: () => void;
   content?: string;
   icon?: ReactNode;
+  children?: ReactNode;
+  isLoading?: boolean;
   className: string;
 };
 
-const Button = ({ onClick, content, icon, className }: buttonProps) => {
+const Button = ({ content, icon, children, className, isLoading }: buttonProps & DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> ) => {
   return (
-    <button
-      onClick={onClick}
-      className={`flex gap-2 justify-center items-center ${className}`}
-    >
-      <span className={`${className}`}>{content}</span>
-      <span className={`${className}`}>{icon}</span>
+    <button className={className} disabled={isLoading}>
+      {isLoading ? "Loading..." : content}
+      {icon && <span>{icon}</span>}
+      {children}
     </button>
   );
 };

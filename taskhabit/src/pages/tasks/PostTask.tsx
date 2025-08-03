@@ -183,12 +183,13 @@ export default function PostTask() {
                 value={formData.deadline}
                 onChange={handleChange}
                 min={new Date().toISOString().split("T")[0]}
-                className="input-primary"
+                className="block w-full rounded-[8px] border-[#d1d5dc] focus:border-[#3dbe9e] focus:ring-[#3dbe9e] 
+        font-[14px] leading-[1.4286]"
               />
             </div>
 
             <div className="pt-4">
-              <Button type="submit" fullWidth size="lg">
+              <Button type="submit" className="w-full px-4 py-1 bg-[#3dbe9e] text-white hover:bg-[#37ab8f] focus:ring-2 focus:ring-[#3dbe9e]/20 transition-all">
                 Post Task
               </Button>
             </div>
